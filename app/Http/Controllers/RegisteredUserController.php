@@ -23,11 +23,10 @@ class RegisteredUserController extends Controller
         
         $user = User::create($validated);
 
-        session(['pending_user_id' => $user->id]);
-
-        return redirect()->route('auth.verify-face');
-
         Auth::login($user);
 
+        return redirect('/');
     }
+
+   
 }
